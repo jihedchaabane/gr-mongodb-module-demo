@@ -1,0 +1,111 @@
+Créer une catégorie :
+
+POST
+http://localhost:8080/api/categories
+Content-Type: application/json
+
+{
+    "categoryId": "cat1",
+    "categoryName": "Electronics"
+}
+----------------------------------------------------
+Lister toutes les catégories :
+
+GET http://localhost:8080/api/categories
+----------------------------------------------------
+Créer un client :
+
+POST 
+http://localhost:8080/api/customers
+Content-Type: application/json
+
+{
+    "customerId": "cust1",
+    "firstName": "Jean",
+    "lastName": "Dupont"
+}
+----------------------------------------------------
+Créer un produit :
+
+POST 
+http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+    "id": "prod1",
+    "name": "Smartphone",
+    "price": 599.99,
+    "stockQuantity": 50,
+    "category": {
+        "categoryId": "cat1",
+        "categoryName": "Electronics"
+    }
+}
+----------------------------------------------------
+Créer une commande :
+
+POST 
+http://localhost:8080/api/orders
+Content-Type: application/json
+
+{
+    "orderId": "ord1",
+    "orderDate": "2025-05-12T10:00:00.000Z",
+    "status": "En attente",
+    "customer": {
+        "customerId": "cust1",
+        "firstName": "Jean",
+        "lastName": "Dupont"
+    },
+    "products": [
+        {
+            "id": "prod1",
+            "name": "Smartphone",
+            "price": 599.99,
+            "stockQuantity": 50,
+            "category": {
+                "categoryId": "cat1",
+                "categoryName": "Electronics"
+            }
+        }
+    ]
+}
+----------------------------------------------------
+Lire une commande :
+
+GET 
+http://localhost:8080/api/orders/ord1
+----------------------------------------------------
+Mettre à jour une commande :
+
+PUT 
+http://localhost:8080/api/orders/ord1
+Content-Type: application/json
+
+{
+    "orderId": "ord1",
+    "orderDate": "2025-05-12T10:00:00.000Z",
+    "status": "Expédiée",
+    "customer": {
+        "customerId": "cust1",
+        "firstName": "Jean",
+        "lastName": "Dupont"
+    },
+    "products": [
+        {
+            "id": "prod1",
+            "name": "Smartphone",
+            "price": 599.99,
+            "stockQuantity": 50,
+            "category": {
+                "categoryId": "cat1",
+                "categoryName": "Electronics"
+            }
+        }
+    ]
+}
+----------------------------------------------------
+Supprimer une commande :
+
+DELETE 
+http://localhost:8080/api/orders/ord1

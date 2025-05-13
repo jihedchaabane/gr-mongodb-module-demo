@@ -1,0 +1,27 @@
+
+db.customers.insertOne({ "customerId": "cust1", "firstName": "Jean", "lastName": "Dupont" });
+db.categories.insertOne({ "categoryId": "cat1", "categoryName": "Electronics" });
+db.products.insertOne({ "id": "prod1", "name": "Smartphone", "price": 599.99, "stockQuantity": 0, "category": { "categoryId": "cat1", "categoryName": "Electronics" } });
+db.orders.insertOne({ "orderId": "ord1", "orderDate": ISODate("2025-05-12T10:00:00Z"), "status": "En attente", "customer": { "customerId": "cust1", "firstName": "Jean", "lastName": "Dupont" }, "products": [{ "id": "prod1", "name": "Smartphone", "price": 599.99, "stockQuantity": 0, "category": { "categoryId": "cat1", "categoryName": "Electronics" } }] });
+
+
+
+Catégorie :
+GET http://localhost:8080/api/categories/search?name=electro
+GET http://localhost:8080/api/categories/product-count
+GET http://localhost:8080/api/categories/min-products?minProducts=5
+
+Client :
+GET http://localhost:8080/api/customers/search?name=jean
+GET http://localhost:8080/api/customers/min-spending?minSpending=1000
+GET http://localhost:8080/api/customers/top-active?limit=10
+
+Produit :
+GET http://localhost:8080/api/products/price-range?minPrice=100&maxPrice=1000
+GET http://localhost:8080/api/products/out-of-stock
+GET http://localhost:8080/api/products/top-expensive/cat1?limit=5
+
+Commande :
+GET http://localhost:8080/api/orders/date-range?startDate=2025-01-01&endDate=2025-12-31
+GET http://localhost:8080/api/orders/status?status=En%20attente
+GET http://localhost:8080/api/orders/total-amount/cust1
