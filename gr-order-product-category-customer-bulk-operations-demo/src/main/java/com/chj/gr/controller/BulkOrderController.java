@@ -37,7 +37,6 @@ public class BulkOrderController {
                 })
                 .exceptionally(throwable -> {
                     logger.error("Failed to save orders", throwable);
-                    logger.error("Failed to save orders: " + throwable.getMessage());
                     return ResponseEntity.badRequest().body("Failed to save orders: " + throwable.getMessage());
                 });
     }

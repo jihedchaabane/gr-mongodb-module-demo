@@ -1,25 +1,24 @@
 package com.chj.gr.bdd.steps;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 @ActiveProfiles("test")
 public class CommonBulkOrderSteps {
 
     @Autowired
     private TestRestTemplate restTemplate;
-
-    @Autowired
-    private ObjectMapper objectMapper;
 
     private ResponseEntity<String> response;
 
