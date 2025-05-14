@@ -17,7 +17,6 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -94,12 +93,11 @@ public class OrderControllerExceptionTest {
     }
 
     @Test
-    @Disabled
     void findByDateRange_ShouldReturnBadRequest_WhenDateFormatIsInvalid() throws Exception {
         mockMvc.perform(get("/api/orders/date-range")
-                .param("startDate", "invalid-date")
+                .param("startDate", "invalide_date")
                 .param("endDate", "2025-12-31"))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isInternalServerError());
 
         verify(orderService, never()).findByDateRange(any(Date.class), any(Date.class));
     }

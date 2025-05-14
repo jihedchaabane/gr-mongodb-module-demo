@@ -68,7 +68,6 @@ public class CustomerControllerRealDbIntegrationTest {
     }
 
     @Test
-    @Disabled
     void createCustomer_ShouldReturnBadRequest_WhenFirstNameIsMissing() throws Exception {
         String invalidJson = "{\"customerId\": \"cust1\", \"lastName\": \"Dupont\"}";
         HttpHeaders headers = new HttpHeaders();

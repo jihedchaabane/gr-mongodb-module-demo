@@ -68,7 +68,6 @@ public class CategoryControllerRealDbIntegrationTest {
     }
 
     @Test
-    @Disabled
     void createCategory_ShouldReturnBadRequest_WhenCategoryIdIsMissing() throws Exception {
         String invalidJson = "{\"categoryName\": \"Electronics\"}";
         HttpHeaders headers = new HttpHeaders();

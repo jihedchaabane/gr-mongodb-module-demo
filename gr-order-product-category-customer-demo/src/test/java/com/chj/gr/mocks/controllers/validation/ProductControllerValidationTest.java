@@ -13,7 +13,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -41,7 +40,6 @@ public class ProductControllerValidationTest {
     private ProductService productService;
 
     @Test
-    @Disabled
     void createProduct_ShouldReturnBadRequest_WhenPriceIsNegative() throws Exception {
         String invalidJson = "{\"id\": \"prod1\", \"name\": \"Smartphone\", \"price\": -100, \"stockQuantity\": 50, \"category\": {\"categoryId\": \"cat1\", \"categoryName\": \"Electronics\"}}";
         mockMvc.perform(post("/api/products")
@@ -51,7 +49,6 @@ public class ProductControllerValidationTest {
     }
 
     @Test
-    @Disabled
     void createProduct_ShouldReturnBadRequest_WhenCategoryIsMissing() throws Exception {
         String invalidJson = "{\"id\": \"prod1\", \"name\": \"Smartphone\", \"price\": 599.99, \"stockQuantity\": 50}";
         mockMvc.perform(post("/api/products")
@@ -61,7 +58,6 @@ public class ProductControllerValidationTest {
     }
 
     @Test
-    @Disabled
     void updateProduct_ShouldReturnBadRequest_WhenStockQuantityIsNegative() throws Exception {
         String invalidJson = "{\"id\": \"prod1\", \"name\": \"Smartphone\", \"price\": 599.99, \"stockQuantity\": -10, \"category\": {\"categoryId\": \"cat1\", \"categoryName\": \"Electronics\"}}";
         mockMvc.perform(put("/api/products/prod1")

@@ -40,7 +40,6 @@ public class CustomerControllerValidationTest {
     private CustomerService customerService;
 
     @Test
-    @Disabled
     void createCustomer_ShouldReturnBadRequest_WhenCustomerIdIsMissing() throws Exception {
         String invalidJson = "{\"firstName\": \"Jean\", \"lastName\": \"Dupont\"}";
         mockMvc.perform(post("/api/customers")
@@ -50,7 +49,6 @@ public class CustomerControllerValidationTest {
     }
 
     @Test
-    @Disabled
     void createCustomer_ShouldReturnBadRequest_WhenFirstNameIsEmpty() throws Exception {
         String invalidJson = "{\"customerId\": \"cust1\", \"firstName\": \"\", \"lastName\": \"Dupont\"}";
         mockMvc.perform(post("/api/customers")
@@ -60,7 +58,6 @@ public class CustomerControllerValidationTest {
     }
 
     @Test
-    @Disabled
     void updateCustomer_ShouldReturnBadRequest_WhenLastNameIsMissing() throws Exception {
         String invalidJson = "{\"customerId\": \"cust1\", \"firstName\": \"Jean\"}";
         mockMvc.perform(put("/api/customers/cust1")

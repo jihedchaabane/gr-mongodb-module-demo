@@ -12,9 +12,29 @@
 		<artifactId>gr-mongodb-module-demo</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+	
+	<dependencies>
+		<dependency>
+			<artifactId>gr-order-product-category-customer-model</artifactId>
+			<groupId>com.chj.gr</groupId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
 			<!-- https://www.busyqa.com/post/maven-cucumber-reporting-in-2022 -->
 			<plugin>
 				<groupId>net.masterthought</groupId>
@@ -50,32 +70,34 @@
 			<!--
 				Plugin maven-antrun pour copier le dossier "/cucumber"
 			-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>move-cucumber-report</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <mkdir dir="${project.basedir}/reports/cucumber"/>
-                                <!--
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>move-cucumber-report</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<mkdir dir="${project.basedir}/reports/cucumber" />
+								<!--
                                 <move todir="${project.basedir}/reports/cucumber">
                                     <fileset dir="${project.build.directory}/cucumber"/>
                                 </move>
                                 -->
-								<copy todir="${project.basedir}/reports/cucumber">
-									<fileset dir="${project.build.directory}/cucumber"/>
+								<copy
+									todir="${project.basedir}/reports/cucumber">
+									<fileset
+										dir="${project.build.directory}/cucumber" />
 								</copy>
-                            </target>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>

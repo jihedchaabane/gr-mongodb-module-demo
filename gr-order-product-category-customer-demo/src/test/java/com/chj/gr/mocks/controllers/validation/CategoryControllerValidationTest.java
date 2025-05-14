@@ -13,7 +13,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -40,7 +39,6 @@ public class CategoryControllerValidationTest {
     private CategoryService categoryService;
 
     @Test
-    @Disabled
     void createCategory_ShouldReturnBadRequest_WhenCategoryIdIsMissing() throws Exception {
         String invalidJson = "{\"categoryName\": \"Electronics\"}"; // categoryId manquant
         mockMvc.perform(post("/api/categories")
@@ -50,7 +48,6 @@ public class CategoryControllerValidationTest {
     }
 
     @Test
-    @Disabled
     void createCategory_ShouldReturnBadRequest_WhenCategoryNameIsEmpty() throws Exception {
         String invalidJson = "{\"categoryId\": \"cat1\", \"categoryName\": \"\"}";
         mockMvc.perform(post("/api/categories")
@@ -60,7 +57,6 @@ public class CategoryControllerValidationTest {
     }
 
     @Test
-    @Disabled
     void updateCategory_ShouldReturnBadRequest_WhenCategoryNameIsMissing() throws Exception {
         String invalidJson = "{\"categoryId\": \"cat1\"}";
         mockMvc.perform(put("/api/categories/cat1")

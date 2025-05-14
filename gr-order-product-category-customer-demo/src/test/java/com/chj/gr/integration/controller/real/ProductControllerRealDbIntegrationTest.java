@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -74,7 +73,6 @@ public class ProductControllerRealDbIntegrationTest {
     }
 
     @Test
-    @Disabled
     void createProduct_ShouldReturnBadRequest_WhenPriceIsNegative() throws Exception {
         Category category = new Category("cat1", "Electronics");
         mongoTemplate.save(category);

@@ -16,7 +16,6 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -52,7 +51,6 @@ public class OrderControllerValidationTest {
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @Test
-    @Disabled
     void createOrder_ShouldReturnBadRequest_WhenOrderIdIsMissing() throws Exception {
         Customer customer = new Customer("cust1", "Jean", "Dupont");
         Category category = new Category("cat1", "Electronics");
@@ -65,7 +63,6 @@ public class OrderControllerValidationTest {
     }
 
     @Test
-    @Disabled
     void createOrder_ShouldReturnBadRequest_WhenCustomerIsMissing() throws Exception {
         Category category = new Category("cat1", "Electronics");
         Product product = new Product("prod1", "Smartphone", 599.99, 50, category);
@@ -77,7 +74,6 @@ public class OrderControllerValidationTest {
     }
 
     @Test
-    @Disabled
     void updateOrder_ShouldReturnBadRequest_WhenStatusIsEmpty() throws Exception {
         Customer customer = new Customer("cust1", "Jean", "Dupont");
         Category category = new Category("cat1", "Electronics");
